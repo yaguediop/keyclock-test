@@ -1,0 +1,26 @@
+server:
+  port: 8081
+
+keycloak:
+  auth-server-url: http://localhost:8090/auth
+  realm: springboot
+  public-client: true
+  resource: products-app
+  security-constraints:
+    - authRoles: [ 'manager' ]
+      securityCollections:
+        - name: produits
+          patterns: [ '/products/*' ]
+
+
+#  security-constraints[0]:
+#    auth-roles:
+#      - manager
+#    security-collections[0]:
+#      name: endpoints produits
+#      patterns:
+#        - /products/*
+#      methods:
+#        - POST
+#        - PUT
+#        - DELETE
